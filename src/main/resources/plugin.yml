@@ -1,0 +1,4 @@
+name: TwipostMC
+version: @version@
+main: com.tklcraft.twipostmc.TwipostMCPlugin
+api-version: 1.13

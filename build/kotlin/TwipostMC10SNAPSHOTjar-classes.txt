@@ -1,0 +1,1 @@
+C:\Users\kiyoshi kanazawa\IdeaProjects\TwipostMC\build\classes\kotlin\main\com\tklcraft\twipostmc\TwipostMCPlugin.class
