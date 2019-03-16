@@ -1,5 +1,7 @@
 package com.tklcraft.twipostmc.command
 
+import org.bukkit.ChatColor
+import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import java.lang.StringBuilder
 
@@ -7,18 +9,26 @@ abstract class TWSubCommand constructor(
         val baseCmd: String,
         val name: String,
         val aliases: Set<String> = setOf(),
-        private val args: String = "", //e.g. "<param1> <param2> ... "
-        val usage: String) {
+        private val args: String = "", //e.g. "<param1> <param2> ..."
+        val description: String) {
+    val usage: String
+        get() = "/$baseCmd $name $args"
     val permission: String
         get() = "$baseCmd.$name"
 
     open fun runCommand(sender: CommandSender, args: Array<out String>) {}
 
     fun sendUsage(sender: CommandSender) {
-        val sb = StringBuilder().append("/$baseCmd $name ")
-        if (args.isNotBlank()) sb.append("$args ")
-        sb.append(usage)
+        sender.sendMessage(usage)
+    }
 
-        sender.sendMessage(sb.toString())
+    fun sendDescription(sender: CommandSender) {
+        sender.sendMessage(description)
+    }
+
+    fun syntaxError(sender: CommandSender, message: String) {
+        if (message.isBlank()) return
+
+        sender.sendMessage("${ChatColor.YELLOW}$message")
     }
 }

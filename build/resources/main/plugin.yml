@@ -17,7 +17,12 @@ permissions:
     default: false
     children:
       tw.sample: true
+      tw.post: true
 
   tw.sample:
-    description: Allosws /tw subcommand
+    description: Allows /tw sample
+    default: op
+
+  tw.post:
+    description: Allows /tw post
     default: op

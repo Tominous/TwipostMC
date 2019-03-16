@@ -10,7 +10,7 @@ object TWCommand : CommandExecutor, TabCompleter {
     private val subCmds : MutableMap<String, TWSubCommand> = TreeMap(String.CASE_INSENSITIVE_ORDER)
 
     init {
-        addSubCommand(SampleCommand)
+        addSubCommand(PostCommand)
     }
 
     private fun addSubCommand(command : TWSubCommand) {

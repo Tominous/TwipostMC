@@ -12,6 +12,8 @@ class TwipostMCPlugin : JavaPlugin() {
         saveDefaultConfig()
         debug("Save default config")
 
+        setTwitterOAuth()
+        debug("Set Twitter OAuth")
     }
 
     override fun onDisable() {
@@ -20,5 +22,9 @@ class TwipostMCPlugin : JavaPlugin() {
 
     private fun registerCommand() {
         getCommand(TW_CMD)?.setExecutor(TWCommand)
+    }
+
+    private fun setTwitterOAuth() {
+
     }
 }
