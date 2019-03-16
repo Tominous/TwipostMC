@@ -47,6 +47,8 @@ $RECYCLE.BIN
 # Thumbnails
 ._*
 
+#kotlin
+/gradle/
 /.idea/**/workspace.xml
 /.idea/**/tasks.xml
 /tmp/
