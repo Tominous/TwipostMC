@@ -2,3 +2,22 @@ name: TwipostMC
 version: @version@
 main: com.tklcraft.twipostmc.TwipostMCPlugin
 api-version: 1.13
+authors: [kanakiyo314, kakeru4127]
+
+commands:
+  tw:
+    description: Controls TwipostMC.
+    aliases: [TwipostMC, twipostmc, twipost]
+    usage: |
+      /<command> subcommand - description...
+
+permissions:
+  tw.*:
+    description: Give access to all TwipostMC functions
+    default: false
+    children:
+      tw.sample: true
+
+  tw.sample:
+    description: Allosws /tw subcommand
+    default: op
