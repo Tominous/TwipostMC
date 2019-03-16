@@ -47,9 +47,10 @@ $RECYCLE.BIN
 # Thumbnails
 ._*
 
-/.idea/**/workspace.xml
-/.idea/**/tasks.xml
-/tmp/
+.gradle/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+tmp/
 /bin/
 /out/
 *.test
