@@ -11,16 +11,14 @@ internal val pluginInstance : TwipostMCPlugin by lazy {
     return@lazy instance as TwipostMCPlugin
 }
 
-internal val twitterInstance : Twitter by lazy {
-    val cb = ConfigurationBuilder()
-            .setDebugEnabled(true)
-            .setOAuthConsumerKey(pluginInstance.config.getString("consumerKey"))
-            .setOAuthConsumerSecret(pluginInstance.config.getString("consumerSecret"))
-            .setOAuthAccessToken(pluginInstance.config.getString("accessToken"))
-            .setOAuthAccessTokenSecret(pluginInstance.config.getString("accessTokenSecret"))
-    val tf = TwitterFactory(cb.build())
-    return@lazy tf.instance
-}
+internal val twitterInstance : Twitter = TwitterFactory(
+        ConfigurationBuilder()
+                .setDebugEnabled(true)
+                .setOAuthConsumerKey(pluginInstance.config.getString("consumerKey"))
+                .setOAuthConsumerSecret(pluginInstance.config.getString("consumerSecret"))
+                .build())
+        .instance
+
 
 internal fun info(message: String) = pluginInstance.logger.info(message)
 internal fun warning(message: String) = pluginInstance.logger.warning(message)

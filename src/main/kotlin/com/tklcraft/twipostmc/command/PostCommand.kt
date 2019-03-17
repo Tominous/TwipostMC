@@ -15,6 +15,5 @@ object PostCommand : TWSubCommand(
             sendUsage(sender)
             return
         }
-        twitterInstance.updateStatus(args.first())
     }
 }

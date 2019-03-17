@@ -7,7 +7,7 @@ authors: [kanakiyo314, kakeru4127]
 commands:
   tw:
     description: Controls TwipostMC.
-    aliases: [TwipostMC, twipostmc, twipost]
+    aliases: twipost
     usage: |
       /<command> subcommand - description...
 

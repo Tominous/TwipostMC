@@ -11,6 +11,8 @@ object TWCommand : CommandExecutor, TabCompleter {
 
     init {
         addSubCommand(PostCommand)
+        addSubCommand(RegisterCommand)
+        addSubCommand(PinCommand)
     }
 
     private fun addSubCommand(command : TWSubCommand) {
