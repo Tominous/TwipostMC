@@ -5,6 +5,8 @@ import org.bukkit.command.CommandSender
 object SampleCommand : TWSubCommand(
         baseCmd = TW_CMD,
         name = SAMPLE_CMD,
+        canRunPlayer = true,
+        canRunServer = true,
         aliases = setOf("sample", "ex"),
         args = "<param>",
         description = "Help text description"

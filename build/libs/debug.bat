@@ -1,6 +1,6 @@
 @ECHO OFF
-set plugin_path="C:\Users\kiyoshi kanazawa\Desktop\miecraft\plugins"
-set server_path="C:\Users\kiyoshi kanazawa\Desktop\miecraft"
+set plugin_path="C:\Users\kiyoshi kanazawa\Documents\miecraft_server\plugins"
+set server_path="C:\Users\kiyoshi kanazawa\Documents\miecraft_server"
 
 copy /Y TwipostMC-1.0-SNAPSHOT.jar %plugin_path%
 cd %server_path%

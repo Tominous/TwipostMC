@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender
 abstract class TWSubCommand constructor(
         val baseCmd: String,
         val name: String,
+        val canRunPlayer: Boolean,
+        val canRunServer: Boolean,
         val aliases: Set<String> = setOf(),
         private val args: String = "", //e.g. "<param1> <param2> ..."
         val description: String) {
@@ -14,7 +16,8 @@ abstract class TWSubCommand constructor(
     val permission: String
         get() = "$baseCmd.$name"
 
-    open fun runCommand(sender: CommandSender, args: Array<out String>) {}
+    open fun runCommand(sender: CommandSender, args: Array<out String>) {
+    }
 
     fun sendUsage(sender: CommandSender) {
         sender.sendMessage(usage)

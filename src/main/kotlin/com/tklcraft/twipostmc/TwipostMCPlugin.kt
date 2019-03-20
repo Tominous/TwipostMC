@@ -3,11 +3,12 @@ package com.tklcraft.twipostmc
 import com.tklcraft.twipostmc.command.TWCommand
 import com.tklcraft.twipostmc.command.TW_CMD
 import org.bukkit.plugin.java.JavaPlugin
+import twitter4j.TwitterFactory
 
 class TwipostMCPlugin : JavaPlugin() {
     override fun onEnable() {
         registerCommand()
-        debug("TwipostMC command register")
+        debug("TwipostMC commands register")
 
         saveDefaultConfig()
         debug("Save default config")
@@ -25,6 +26,10 @@ class TwipostMCPlugin : JavaPlugin() {
     }
 
     private fun setTwitterOAuth() {
-
+        val twitter = TwitterFactory.getSingleton()
+        twitter.setOAuthConsumer(
+                pluginInstance.config.getString("consumerKey"),
+                pluginInstance.config.getString("consumerSecret")
+        )
     }
 }

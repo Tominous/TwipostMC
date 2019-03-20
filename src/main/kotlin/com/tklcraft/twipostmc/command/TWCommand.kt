@@ -1,9 +1,11 @@
 package com.tklcraft.twipostmc.command
 
+import org.bukkit.Server
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
+import org.bukkit.entity.Player
 import java.util.*
 
 object TWCommand : CommandExecutor, TabCompleter {
@@ -34,23 +36,35 @@ object TWCommand : CommandExecutor, TabCompleter {
             return true
         }
 
+        if (sender is Player && !subCmd.canRunPlayer) {
+            sender.sendMessage("This command is for a player")
+            return true
+        }
+        else if (sender is Server && !subCmd.canRunServer) {
+            sender.sendMessage("This command is for a server")
+            return true
+        }
+
         subCmd.runCommand(sender, args.drop(1).toTypedArray())
         return true
     }
 
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
-        if (args.size == 1) {
-            val tabList = mutableListOf<String>()
-
-            subCmds.forEach{
-                if (sender.hasPermission(it.value.permission)) {
-                    tabList.add(it.key)
+        val tabList = mutableListOf<String>()
+        subCmds.forEach { it ->
+            if (sender.hasPermission(it.value.permission)) {
+                subCmds.forEach {
+                    if(args.isEmpty()) {
+                        tabList.add(it.key)
+                    }
+                    else {
+                        if (it.key.startsWith(args[0])) {
+                            tabList.add(it.key)
+                        }
+                    }
                 }
             }
-
-            return tabList
         }
-
-        return mutableListOf()
+        return tabList
     }
 }

@@ -1,9 +1,10 @@
 package com.tklcraft.twipostmc
 
 import org.bukkit.Bukkit.getPluginManager
-import twitter4j.Twitter
-import twitter4j.TwitterFactory
-import twitter4j.conf.ConfigurationBuilder
+import org.bukkit.configuration.file.YamlConfiguration
+import twitter4j.auth.RequestToken
+import java.io.File
+import java.util.*
 
 internal val pluginInstance : TwipostMCPlugin by lazy {
     val instance = getPluginManager().getPlugin("TwipostMC")
@@ -11,16 +12,13 @@ internal val pluginInstance : TwipostMCPlugin by lazy {
     return@lazy instance as TwipostMCPlugin
 }
 
-internal val twitterInstance : Twitter = TwitterFactory(
-        ConfigurationBuilder()
-                .setDebugEnabled(true)
-                .setOAuthConsumerKey(pluginInstance.config.getString("consumerKey"))
-                .setOAuthConsumerSecret(pluginInstance.config.getString("consumerSecret"))
-                .build())
-        .instance
+internal val twitterConfigFile = File(pluginInstance.dataFolder, "twitter.yml")
+internal val  twitterConfig : YamlConfiguration by lazy {
+    return@lazy YamlConfiguration.loadConfiguration(twitterConfigFile)
+}
+internal val requestTokens = mutableMapOf<UUID, RequestToken>()
 
-
-internal fun info(message: String) = pluginInstance.logger.info(message)
+fun info(message: String) = pluginInstance.logger.info(message)
 internal fun warning(message: String) = pluginInstance.logger.warning(message)
 internal fun debug(message: String) {
     if (pluginInstance.config.getBoolean("debug")) {
