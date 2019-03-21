@@ -57,7 +57,7 @@ object TWCommand : CommandExecutor, TabCompleter {
                     if(args.isEmpty()) {
                         tabList.add(it.key)
                     }
-                    else {
+                    else if(args.size == 1) {
                         if (it.key.startsWith(args[0])) {
                             tabList.add(it.key)
                         }

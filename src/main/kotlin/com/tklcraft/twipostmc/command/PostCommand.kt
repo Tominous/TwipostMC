@@ -3,6 +3,7 @@ package com.tklcraft.twipostmc.command
 import com.tklcraft.twipostmc.twitterConfig
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import twitter4j.StatusUpdate
 import twitter4j.TwitterFactory
 import twitter4j.auth.AccessToken
 
@@ -16,7 +17,7 @@ object PostCommand : TWSubCommand(
         description = "Send a tweet"
 ) {
     override fun runCommand(sender: CommandSender, args: Array<out String>) {
-        val sb = StringBuffer().append(parseArgs(args))
+        val sb = StringBuffer().append(connectArgs(args))
         if(sb.isEmpty()) {
             sendUsage(sender)
             return
@@ -26,8 +27,9 @@ object PostCommand : TWSubCommand(
 
         val twitter = TwitterFactory.getSingleton()
         twitter.oAuthAccessToken = loadAccessToken(sender.uniqueId.toString())
-        sb.append("\n#TwipostMC")
-        val status = twitter.updateStatus(sb.toString())
+        
+        val statusUpdate = StatusUpdate(sb.toString())
+        val status = twitter.updateStatus(statusUpdate)
         sender.sendMessage("Successfully tweet: ${status.text}")
     }
 
@@ -37,13 +39,15 @@ object PostCommand : TWSubCommand(
         return AccessToken(token, tokenSecret)
     }
 
-    private fun parseArgs(args: Array<out String>) : String {
+    private fun connectArgs(args: Array<out String>) : String {
+        if (args.isEmpty()) return ""
+        else if (args.size == 1) return args.first()
         val str = buildString {
             args.forEach {
                 append(it).append(" ")
             }
         }
-        val matchResult = Regex(pattern = """".*"""").find(str, 0) ?: return ""
-        return matchResult.value
+        val matchResult = Regex(pattern = """"(.+?)"""").find(str, 0) ?: return ""
+        return matchResult.value.substring(1, matchResult.value.length -1)
     }
 }

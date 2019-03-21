@@ -18,7 +18,7 @@ internal val  twitterConfig : YamlConfiguration by lazy {
 }
 internal val requestTokens = mutableMapOf<UUID, RequestToken>()
 
-fun info(message: String) = pluginInstance.logger.info(message)
+internal fun info(message: String) = pluginInstance.logger.info(message)
 internal fun warning(message: String) = pluginInstance.logger.warning(message)
 internal fun debug(message: String) {
     if (pluginInstance.config.getBoolean("debug")) {
