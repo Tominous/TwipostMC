@@ -12,7 +12,7 @@ internal val pluginInstance : TwipostMCPlugin by lazy {
     return@lazy instance as TwipostMCPlugin
 }
 
-internal val twitterConfigFile = File(pluginInstance.dataFolder, "twitter.yml")
+internal val twitterConfigFile = File(pluginInstance.dataFolder, "usertoken.yml")
 internal val  twitterConfig : YamlConfiguration by lazy {
     return@lazy YamlConfiguration.loadConfiguration(twitterConfigFile)
 }

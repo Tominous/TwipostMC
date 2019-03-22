@@ -39,10 +39,12 @@ object PinCommand : TWSubCommand(
             twitterConfig.set("${sender.uniqueId}.accessTokenSecret", accessToken.tokenSecret)
             twitterConfig.save(twitterConfigFile)
 
+            requestTokens.remove(sender.uniqueId)
+
             sender.sendMessage("Twitter cooperation is complete!")
         } catch (te: TwitterException) {
             if (te.statusCode == 401) sender.sendMessage("Unable to get the access token.")
-            throw te
+            else throw te
         }
     }
 }

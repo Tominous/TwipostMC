@@ -11,7 +11,7 @@ abstract class TWSubCommand constructor(
         val aliases: Set<String> = setOf(),
         private val args: String = "", //e.g. "<param1> <param2> ..."
         val description: String) {
-    val usage: String
+    private val usage: String
         get() = "/$baseCmd $name $args"
     val permission: String
         get() = "$baseCmd.$name"

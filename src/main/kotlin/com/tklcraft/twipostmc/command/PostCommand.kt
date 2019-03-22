@@ -27,10 +27,12 @@ object PostCommand : TWSubCommand(
 
         val twitter = TwitterFactory.getSingleton()
         twitter.oAuthAccessToken = loadAccessToken(sender.uniqueId.toString())
-        
+
         val statusUpdate = StatusUpdate(sb.toString())
         val status = twitter.updateStatus(statusUpdate)
         sender.sendMessage("Successfully tweet: ${status.text}")
+
+        sender.sendMessage(sb.toString())
     }
 
     private fun loadAccessToken(uuid: String) : AccessToken{
@@ -41,13 +43,13 @@ object PostCommand : TWSubCommand(
 
     private fun connectArgs(args: Array<out String>) : String {
         if (args.isEmpty()) return ""
-        else if (args.size == 1) return args.first()
         val str = buildString {
             args.forEach {
                 append(it).append(" ")
             }
         }
-        val matchResult = Regex(pattern = """"(.+?)"""").find(str, 0) ?: return ""
+        val matchResult = Regex(pattern = """"(.+?)"""").find(str, 0) ?: return args.first()
         return matchResult.value.substring(1, matchResult.value.length -1)
     }
+
 }

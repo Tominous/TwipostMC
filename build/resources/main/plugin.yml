@@ -17,10 +17,20 @@ permissions:
     default: false
     children:
       tw.sample: true
+      tw.register: true
+      tw.ping: true
       tw.post: true
 
   tw.sample:
     description: Allows /tw sample
+    default: op
+
+  tw.register:
+    description: Allows /tw register
+    default: op
+
+  tw.pin:
+    descriptino: Allows /tw ping
     default: op
 
   tw.post:
