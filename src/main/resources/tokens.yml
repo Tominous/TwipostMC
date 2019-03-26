@@ -1,0 +1,5 @@
+server:
+  consumerKey: 'changeme'
+  consumerSecret: 'changeme'
+  accessToken: 'changeme'
+  accessTokenSecret: 'changeme'

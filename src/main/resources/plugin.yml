@@ -20,6 +20,7 @@ permissions:
       tw.register: true
       tw.ping: true
       tw.post: true
+      tw.debug: true
 
   tw.sample:
     description: Allows /tw sample
@@ -35,4 +36,8 @@ permissions:
 
   tw.post:
     description: Allows /tw post
+    default: op
+
+  tw.debug:
+    description: Allosws /tw debug
     default: op

@@ -1,10 +1,9 @@
 package com.tklcraft.twipostmc.command
 
+import com.tklcraft.twipostmc.tweetPost
 import com.tklcraft.twipostmc.twitterConfig
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import twitter4j.StatusUpdate
-import twitter4j.TwitterFactory
 import twitter4j.auth.AccessToken
 
 object PostCommand : TWSubCommand(
@@ -24,20 +23,13 @@ object PostCommand : TWSubCommand(
         }
 
         if (sender !is Player) return
-
-        val twitter = TwitterFactory.getSingleton()
-        twitter.oAuthAccessToken = loadAccessToken(sender.uniqueId.toString())
-
-        val statusUpdate = StatusUpdate(sb.toString())
-        val status = twitter.updateStatus(statusUpdate)
-        sender.sendMessage("Successfully tweet: ${status.text}")
-
-        sender.sendMessage(sb.toString())
+        tweetPost(loadAccessToken(sender.uniqueId.toString()), sb.toString())
+        sender.sendMessage("Successful tweet post")
     }
 
     private fun loadAccessToken(uuid: String) : AccessToken{
-        val token = twitterConfig.getString("$uuid.accessToken")
-        val tokenSecret = twitterConfig.getString("$uuid.accessTokenSecret")
+        val token = twitterConfig.getString("users.$uuid.accessToken")
+        val tokenSecret = twitterConfig.getString("users.$uuid.accessTokenSecret")
         return AccessToken(token, tokenSecret)
     }
 

@@ -15,6 +15,7 @@ object TWCommand : CommandExecutor, TabCompleter {
         addSubCommand(PostCommand)
         addSubCommand(RegisterCommand)
         addSubCommand(PinCommand)
+        addSubCommand(DebugCommand)
     }
 
     private fun addSubCommand(command : TWSubCommand) {
@@ -37,11 +38,11 @@ object TWCommand : CommandExecutor, TabCompleter {
         }
 
         if (sender is Player && !subCmd.canRunPlayer) {
-            sender.sendMessage("This command is for a player")
+            sender.sendMessage("This command is for a server")
             return true
         }
         else if (sender is Server && !subCmd.canRunServer) {
-            sender.sendMessage("This command is for a server")
+            sender.sendMessage("This command is for a player")
             return true
         }
 

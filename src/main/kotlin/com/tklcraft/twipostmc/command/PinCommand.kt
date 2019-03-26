@@ -34,9 +34,9 @@ object PinCommand : TWSubCommand(
                     requestTokens[sender.uniqueId],
                     args.first()
             )
-            twitterConfig.set("${sender.uniqueId}.mcName", sender.name)
-            twitterConfig.set("${sender.uniqueId}.accessToken", accessToken.token)
-            twitterConfig.set("${sender.uniqueId}.accessTokenSecret", accessToken.tokenSecret)
+            twitterConfig.set("users.${sender.uniqueId}.mcName", sender.name)
+            twitterConfig.set("users.${sender.uniqueId}.accessToken", accessToken.token)
+            twitterConfig.set("users.${sender.uniqueId}.accessTokenSecret", accessToken.tokenSecret)
             twitterConfig.save(twitterConfigFile)
 
             requestTokens.remove(sender.uniqueId)
