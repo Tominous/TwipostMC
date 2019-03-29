@@ -36,8 +36,8 @@ class TwipostMCPlugin : JavaPlugin() {
     private fun setTwitterOAuth() {
         val twitter = TwitterFactory.getSingleton()
         twitter.setOAuthConsumer(
-                twitterConfig.getString("server.consumerKey"),
-                twitterConfig.getString("server.consumerSecret")
+                pluginInstance.config.getString("consumerKey"),
+                pluginInstance.config.getString("consumerSecret")
         )
     }
 }

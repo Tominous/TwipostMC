@@ -10,6 +10,12 @@ config-version: 1
 # Toggles debug mode, which prints additional information when the plugin does something.
 debug: false
 
+# Twitter server's token
+consumerKey: 'changeme'
+consumerSecret: 'changeme'
+accessToken: 'changeme'
+accessTokenSecret: 'changeme'
+
 # User login notification
 loginNotification: true
 
@@ -17,4 +23,4 @@ loginNotification: true
 intervalTime: 15
 
 # Login notification tweet message
-loginTweetMessage: "%Player% joined server. Last logout: %LastLogin%"
+loginTweetMessage: "%Player% joined server. Last login: %LastLogin%"

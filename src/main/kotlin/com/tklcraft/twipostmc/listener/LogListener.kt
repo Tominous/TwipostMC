@@ -11,24 +11,29 @@ import java.util.*
 
 object LogListener : Listener {
     private val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-    private val log = mutableMapOf<UUID, Date>()
+    private val login = mutableMapOf<UUID, Date>()
+    private val logout = mutableMapOf<UUID, Date>()
+    private val intervalTime = pluginInstance.config.getDouble("intervalTime") * 1000 * 60
 
     @EventHandler
     fun onPlayerLoginEvent(e : PlayerLoginEvent) {
         val player = e.player
         val uuid = player.uniqueId
-
-
-        if (!pluginInstance.config.getBoolean("loginNotification")) {
-            debug("Config: loginNotification is not defined.")
+        val lastLogin = login[uuid] ?: run {
+            login[uuid] = Date()
+            debug("${player.name} is first login.")
             return
         }
+        val lastLogout = logout[uuid] ?: Date()
 
-        val lastLogOut = log[uuid] ?: Date()
+        if (Date().time - lastLogout.time < intervalTime) {
+            login[uuid] = Date()
+        }
 
-        val intervalTime = pluginInstance.config.getDouble("intervalTime") * 1000 * 60
-
-        if ( Date().time - lastLogOut.time > intervalTime) {
+        if (!pluginInstance.config.getBoolean("loginNotification")) {
+            return
+        }
+        if ( Date().time - lastLogin.time > intervalTime) {
             val message = pluginInstance.config.getString("loginTweetMessage") ?: run {
                 debug("Config: loginTweetMessage is not define.")
                 return
@@ -37,7 +42,7 @@ object LogListener : Listener {
             // debug("[Login notification]: $result")
             debug(message
                     .replace("%Player%".toRegex(), player.name)
-                    .replace("%LastLogin%".toRegex(), sdf.format(lastLogOut)))
+                    .replace("%LastLogout%".toRegex(), sdf.format(lastLogin)))
 
         }
     }
@@ -45,9 +50,14 @@ object LogListener : Listener {
     fun onPlayerLogoutEvent (e : PlayerQuitEvent) {
         val player = e.player
         val uuid = player.uniqueId
+        val lastLogin = login[uuid] ?: Date()
+        val lastLogout = logout[uuid] ?: Date()
 
-        if (log[uuid] == null) {
-            log[uuid] = Date()
+        if (Date().time - lastLogin.time < intervalTime) {
+            logout[uuid] = Date()
+        }
+
+        if (!pluginInstance.config.getBoolean("loginNotification")) {
             return
         }
     }

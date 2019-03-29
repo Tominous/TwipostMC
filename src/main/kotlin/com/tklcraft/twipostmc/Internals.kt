@@ -30,9 +30,9 @@ internal val  twitterConfig : YamlConfiguration by lazy {
 internal val requestTokens = mutableMapOf<UUID, RequestToken>()
 
 internal fun serverTweetPost(message: String) : String {
-    val acsToken = twitterConfig.getString("server.accessToken")
+    val acsToken = pluginInstance.config.getString("accessToken")
             ?: return "server.accessToken is not found"
-    val acsTokenSecret = twitterConfig.getString("server.accessTokenSecret")
+    val acsTokenSecret = pluginInstance.config.getString("accessTokenSecret")
             ?: return "server.accessTokenSecret is not found"
     val accessToken = AccessToken(acsToken, acsTokenSecret)
     return tweetPost(accessToken, message)
