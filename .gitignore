@@ -47,11 +47,11 @@ $RECYCLE.BIN
 # Thumbnails
 ._*
 
-#kotlin
-/gradle/
+# Kotlin
+/.gradle/
 /.idea/**/workspace.xml
 /.idea/**/tasks.xml
-/tmp/
+tmp/
 /bin/
 /out/
 *.test

@@ -7,7 +7,7 @@ authors: [kanakiyo314, kakeru4127]
 commands:
   tw:
     description: Controls TwipostMC.
-    aliases: [TwipostMC, twipostmc, twipost]
+    aliases: twipost
     usage: |
       /<command> subcommand - description...
 
@@ -17,7 +17,27 @@ permissions:
     default: false
     children:
       tw.sample: true
+      tw.register: true
+      tw.ping: true
+      tw.post: true
+      tw.debug: true
 
   tw.sample:
-    description: Allosws /tw subcommand
+    description: Allows /tw sample
+    default: op
+
+  tw.register:
+    description: Allows /tw register
+    default: op
+
+  tw.pin:
+    descriptino: Allows /tw ping
+    default: op
+
+  tw.post:
+    description: Allows /tw post
+    default: op
+
+  tw.debug:
+    description: Allosws /tw debug
     default: op
