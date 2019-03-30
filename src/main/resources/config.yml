@@ -16,11 +16,17 @@ consumerSecret: 'changeme'
 accessToken: 'changeme'
 accessTokenSecret: 'changeme'
 
-# User login notification
-loginNotification: true
-
 # Login notification interval (minutes)
 intervalTime: 15
 
+# User login notification
+loginNotification: true
+
+# User Logout notification
+logoutNotification: true
+
 # Login notification tweet message
-loginTweetMessage: "%Player% joined server. Last login: %LastLogin%"
+loginTweetMessage: "%Player% joined Minecraft server."
+
+# Logout notification tweet message
+logoutTweetMessage: "%Player% left Minecraft server."

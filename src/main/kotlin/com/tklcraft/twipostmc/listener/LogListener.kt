@@ -2,6 +2,7 @@ package com.tklcraft.twipostmc.listener
 
 import com.tklcraft.twipostmc.debug
 import com.tklcraft.twipostmc.pluginInstance
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerLoginEvent
@@ -11,54 +12,63 @@ import java.util.*
 
 object LogListener : Listener {
     private val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-    private val login = mutableMapOf<UUID, Date>()
-    private val logout = mutableMapOf<UUID, Date>()
+    private val initDate = Date(0)
+    private val logins = mutableMapOf<UUID, Date>()
+    private val logouts = mutableMapOf<UUID, Date>()
     private val intervalTime = pluginInstance.config.getDouble("intervalTime") * 1000 * 60
 
     @EventHandler
     fun onPlayerLoginEvent(e : PlayerLoginEvent) {
+        val currentDate = Date()
         val player = e.player
         val uuid = player.uniqueId
-        val lastLogin = login[uuid] ?: run {
-            login[uuid] = Date()
-            debug("${player.name} is first login.")
-            return
-        }
-        val lastLogout = logout[uuid] ?: Date()
-
-        if (Date().time - lastLogout.time < intervalTime) {
-            login[uuid] = Date()
-        }
+        val lastLogin = logins[uuid] ?: initDate
+        logins[uuid] = currentDate
 
         if (!pluginInstance.config.getBoolean("loginNotification")) {
             return
         }
-        if ( Date().time - lastLogin.time > intervalTime) {
-            val message = pluginInstance.config.getString("loginTweetMessage") ?: run {
-                debug("Config: loginTweetMessage is not define.")
+
+        if (currentDate.time - lastLogin.time > intervalTime) {
+            val messageTemplate = pluginInstance.config.getString("loginTweetMessage") ?: run {
+                debug("Login tweet message is not defined.")
                 return
             }
-            // val result = serverTweetPost(message.replace("%Player%".toRegex(), e.player.name))
-            // debug("[Login notification]: $result")
-            debug(message
-                    .replace("%Player%".toRegex(), player.name)
-                    .replace("%LastLogout%".toRegex(), sdf.format(lastLogin)))
+            val message = messageFormatter(messageTemplate, player)
 
+            // val result = serverTweetPost(message)
+            debug(message)
         }
     }
+
     @EventHandler
     fun onPlayerLogoutEvent (e : PlayerQuitEvent) {
+        val currentDate = Date()
         val player = e.player
         val uuid = player.uniqueId
-        val lastLogin = login[uuid] ?: Date()
-        val lastLogout = logout[uuid] ?: Date()
+        val lastLogin = logins[uuid] ?: initDate
+        val lastLogout = logouts[uuid] ?: initDate
+        logouts[uuid] = currentDate
 
-        if (Date().time - lastLogin.time < intervalTime) {
-            logout[uuid] = Date()
-        }
-
-        if (!pluginInstance.config.getBoolean("loginNotification")) {
+        if (!pluginInstance.config.getBoolean("logoutNotification")) {
             return
         }
+
+        if (currentDate.time - lastLogin.time > intervalTime &&
+                currentDate.time - lastLogout.time > intervalTime) {
+            val messageTemplate = pluginInstance.config.getString("logoutTweetMessage") ?: run {
+                debug("Logout tweet message is not defined.")
+                return
+            }
+            val message = messageFormatter(messageTemplate, player)
+
+            // val result = serverTweetPost(message)
+            debug(message)
+        }
+    }
+
+    private fun messageFormatter(message: String, player: Player) : String {
+        return message
+                .replace("%Player%".toRegex(), player.name)
     }
 }
