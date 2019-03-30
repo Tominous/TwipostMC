@@ -5,9 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TwipostMC.iml" filepath="$PROJECT_DIR$/.idea/modules/TwipostMC.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TwipostMC.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TwipostMC.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TwipostMC.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TwipostMC.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.iml" filepath="$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.test.iml" />
     </modules>
   </component>
 </project>
