@@ -39,6 +39,9 @@ $RECYCLE.BIN
 *.msm
 *.msp
 
+# Windows Batch File
+*.bat
+
 # OSX
 .DS_Stor
 .AppleDouble

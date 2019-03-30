@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="com.tkl-craft.TwipostMC.main" target="1.8" />
       <module name="com.tkl-craft.TwipostMC.test" target="1.8" />
+      <module name="TwipostMC.main" target="1.8" />
+      <module name="TwipostMC.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
