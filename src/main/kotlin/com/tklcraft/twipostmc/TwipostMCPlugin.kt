@@ -34,10 +34,16 @@ class TwipostMCPlugin : JavaPlugin() {
     }
 
     private fun setTwitterOAuth() {
-        val twitter = TwitterFactory.getSingleton()
-        twitter.setOAuthConsumer(
-                pluginInstance.config.getString("consumerKey"),
-                pluginInstance.config.getString("consumerSecret")
-        )
+        // TODO: Change the following key
+        val defaultConsumerKey = "changeme"
+        val defaultConsumerSecret = "changeme"
+
+        val configConsumerKey = twitterConfig.getString("server.consumerKey") ?: ""
+        val configConsumerSecret = twitterConfig.getString("server.consumerSecret") ?: ""
+
+        val consumerKey = if (configConsumerKey.isNotBlank()) configConsumerKey else defaultConsumerKey
+        val consumerSecret = if (configConsumerSecret.isNotBlank()) configConsumerSecret else defaultConsumerSecret
+
+        TwitterFactory.getSingleton().setOAuthConsumer(consumerKey, consumerSecret)
     }
 }

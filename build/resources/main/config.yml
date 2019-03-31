@@ -4,20 +4,11 @@ config-version: 1
 # Toggles debug mode, which prints additional information when the plugin does something.
 debug: false
 
-# Twitter server's token
-consumerKey: 'changeme'
-consumerSecret: 'changeme'
-accessToken: 'changeme'
-accessTokenSecret: 'changeme'
-
 # Login notification interval (minutes)
 intervalTime: 15
 
-# User login notification
-loginNotification: true
-
-# User Logout notification
-logoutNotification: true
+# User login/logout notification
+notification: false
 
 # Login notification tweet message
 loginTweetMessage: "%Player% joined Minecraft server."

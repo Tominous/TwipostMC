@@ -16,6 +16,7 @@ object TWCommand : CommandExecutor, TabCompleter {
         addSubCommand(RegisterCommand)
         addSubCommand(PinCommand)
         addSubCommand(DebugCommand)
+        addSubCommand(NotificationCommand)
     }
 
     private fun addSubCommand(command : TWSubCommand) {
@@ -53,15 +54,15 @@ object TWCommand : CommandExecutor, TabCompleter {
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
         val tabList = mutableListOf<String>()
         subCmds.forEach { it ->
-            if (sender.hasPermission(it.value.permission)) {
-                subCmds.forEach {
-                    if(args.isEmpty()) {
+            if (sender.hasPermission(it.value.permission) &&
+                    (sender is Player && it.value.canRunPlayer) ||
+                    (sender !is Player && it.value.canRunServer)) {
+                if(args.isEmpty()) {
+                    tabList.add(it.key)
+                }
+                else if(args.size == 1) {
+                    if (it.key.startsWith(args[0])) {
                         tabList.add(it.key)
-                    }
-                    else if(args.size == 1) {
-                        if (it.key.startsWith(args[0])) {
-                            tabList.add(it.key)
-                        }
                     }
                 }
             }

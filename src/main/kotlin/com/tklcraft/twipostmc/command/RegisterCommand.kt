@@ -1,29 +1,30 @@
 package com.tklcraft.twipostmc.command
 
+import com.tklcraft.twipostmc.requestTokens
 import org.bukkit.ChatColor
+import org.bukkit.Server
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import twitter4j.TwitterFactory
+import java.util.*
 
 object RegisterCommand : TWSubCommand(
         baseCmd = TW_CMD,
         name = REGISTER_CMD,
         canRunPlayer = true,
-        canRunServer = false,
+        canRunServer = true,
         description = "Connect user's Twitter account"
 ) {
-    override fun runCommand(sender: CommandSender, args: Array<out String>) {
-        if(sender is Player) registerPlayerTwitterAccount(sender)
-    }
+    private val twitter = TwitterFactory.getSingleton()
 
-    private fun registerPlayerTwitterAccount(player : Player) {
-        val twitter = TwitterFactory.getSingleton()
+    override fun runCommand(sender: CommandSender, args: Array<out String>) {
         twitter.oAuthAccessToken = null
         val requestToken = twitter.oAuthRequestToken
-        com.tklcraft.twipostmc.requestTokens[player.uniqueId] = requestToken
+        if (sender is Player) requestTokens[sender.uniqueId] = requestToken
+        else                  requestTokens[UUID(0, 0)] = requestToken
 
-        player.sendMessage("Please access this URL:")
-        player.sendMessage("${ChatColor.AQUA}${requestToken.authorizationURL}")
-        player.sendMessage("After authentication, please enter the PIN code displayed on your browser. /$baseCmd $PIN_CMD")
+        sender.sendMessage("Please access this URL:")
+        sender.sendMessage("${ChatColor.AQUA}${requestToken.authorizationURL}")
+        sender.sendMessage("After authentication, please enter the PIN code displayed on your browser. /$baseCmd $PIN_CMD")
     }
 }

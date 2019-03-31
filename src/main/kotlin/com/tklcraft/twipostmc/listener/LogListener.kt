@@ -2,6 +2,7 @@ package com.tklcraft.twipostmc.listener
 
 import com.tklcraft.twipostmc.debug
 import com.tklcraft.twipostmc.pluginInstance
+import com.tklcraft.twipostmc.serverTweetPost
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -25,7 +26,7 @@ object LogListener : Listener {
         val lastLogin = logins[uuid] ?: initDate
         logins[uuid] = currentDate
 
-        if (!pluginInstance.config.getBoolean("loginNotification")) {
+        if (!pluginInstance.config.getBoolean("notification")) {
             return
         }
 
@@ -35,14 +36,13 @@ object LogListener : Listener {
                 return
             }
             val message = messageFormatter(messageTemplate, player)
-
-            // val result = serverTweetPost(message)
-            debug(message)
+            val result = serverTweetPost(message)
+            debug(result)
         }
     }
 
     @EventHandler
-    fun onPlayerLogoutEvent (e : PlayerQuitEvent) {
+    fun onPlayerQuitEvent (e : PlayerQuitEvent) {
         val currentDate = Date()
         val player = e.player
         val uuid = player.uniqueId
@@ -50,7 +50,7 @@ object LogListener : Listener {
         val lastLogout = logouts[uuid] ?: initDate
         logouts[uuid] = currentDate
 
-        if (!pluginInstance.config.getBoolean("logoutNotification")) {
+        if (!pluginInstance.config.getBoolean("notification")) {
             return
         }
 
@@ -61,9 +61,8 @@ object LogListener : Listener {
                 return
             }
             val message = messageFormatter(messageTemplate, player)
-
-            // val result = serverTweetPost(message)
-            debug(message)
+            val result = serverTweetPost(message)
+            debug(result)
         }
     }
 

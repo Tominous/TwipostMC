@@ -17,14 +17,10 @@ permissions:
     default: false
     children:
       tw.sample: true
-      tw.register: true
       tw.ping: true
       tw.post: true
       tw.debug: true
-
-  tw.sample:
-    description: Allows /tw sample
-    default: op
+      tw.notification: true
 
   tw.register:
     description: Allows /tw register
@@ -40,4 +36,8 @@ permissions:
 
   tw.debug:
     description: Allosws /tw debug
+    default: op
+
+  tw.notification:
+    description: Allows /tw notification
     default: op
