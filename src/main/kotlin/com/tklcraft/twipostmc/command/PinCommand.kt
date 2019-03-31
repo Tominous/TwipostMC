@@ -29,7 +29,7 @@ object PinCommand : TWSubCommand(
 
         when (sender) {
             is Player -> connectTwitterAccountUser(sender, args.first())
-            else -> connectTwitterAccountServer(sender as Server, args.first())
+            else -> connectTwitterAccountServer(sender.server, args.first())
         }
         sender.sendMessage("Twitter cooperation is complete!")
     }

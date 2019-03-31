@@ -5,13 +5,21 @@ config-version: 1
 debug: false
 
 # Login notification interval (minutes)
-intervalTime: 15
+intervalTime: 0
 
 # User login/logout notification
 notification: false
 
 # Login notification tweet message
-loginTweetMessage: "%Player% joined Minecraft server."
+loginTweetMessage: -|
+  [%DATE%]
+  %PLAYER% joined Minecraft server.
 
 # Logout notification tweet message
-logoutTweetMessage: "%Player% left Minecraft server."
+logoutTweetMessage: -|
+  [%DATE%]
+  %PLAYER% left Minecraft server.
+
+# Hash tag
+hashTag:
+  - TwipostMC

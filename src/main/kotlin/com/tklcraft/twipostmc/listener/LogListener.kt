@@ -46,7 +46,6 @@ object LogListener : Listener {
         val currentDate = Date()
         val player = e.player
         val uuid = player.uniqueId
-        val lastLogin = logins[uuid] ?: initDate
         val lastLogout = logouts[uuid] ?: initDate
         logouts[uuid] = currentDate
 
@@ -54,7 +53,7 @@ object LogListener : Listener {
             return
         }
 
-        if (currentDate.time - lastLogin.time > intervalTime &&
+        if (currentDate.time - lastLogout.time > intervalTime &&
                 currentDate.time - lastLogout.time > intervalTime) {
             val messageTemplate = pluginInstance.config.getString("logoutTweetMessage") ?: run {
                 debug("Logout tweet message is not defined.")
@@ -68,6 +67,8 @@ object LogListener : Listener {
 
     private fun messageFormatter(message: String, player: Player) : String {
         return message
-                .replace("%Player%".toRegex(), player.name)
+                .replace("%PLAYER%".toRegex(), player.name)
+                .replace("%DATE%".toRegex(), sdf.format(Date()))
+                .replace("""\\n""".toRegex(), "\n")
     }
 }

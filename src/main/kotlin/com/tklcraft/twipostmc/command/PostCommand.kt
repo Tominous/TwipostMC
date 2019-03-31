@@ -10,7 +10,7 @@ object PostCommand : TWSubCommand(
         baseCmd = TW_CMD,
         name = POST_CMD,
         canRunPlayer = true,
-        canRunServer = true,
+        canRunServer = false,
         aliases = setOf(),
         args = """<message> | <"sample text">""",
         description = "Send a tweet"

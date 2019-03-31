@@ -11,7 +11,15 @@ intervalTime: 15
 notification: false
 
 # Login notification tweet message
-loginTweetMessage: "%Player% joined Minecraft server."
+loginTweetMessage: -|
+  [%DATE%]
+  %PLAYER% joined Minecraft server.
 
 # Logout notification tweet message
-logoutTweetMessage: "%Player% left Minecraft server."
+logoutTweetMessage: -|
+  [%DATE%]
+  %PLAYER% left Minecraft server.
+
+# Hash tag
+hashTag:
+  - TwipostMC
