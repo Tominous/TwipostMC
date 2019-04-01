@@ -24,6 +24,15 @@ config.ymlで各種設定を行うことができる。各設定値は[config.ym
   - /tw notification - ユーザのログイン、ログアウトをTwitterに自動的に通知するかどうか設定する。ツイートするTwitterアカウントはサーバコンソールからregisterされたアカウントになる。
   - /tw delaytime - 通知遅延時間を秒単位で設定する。delayTime内に同じユーザが複数回ログインまたはログアウトした場合、ツイート回数は1回となる。0に設定した場合、即時にTwitterによる通知が行われる。
   
+- permission
+  - tw.*
+  - tw.register
+  - tw.pin
+  - tw. post
+  - tw.debug (Server console only)
+  - tw.notification (Server console only)
+  - tw.delaytime (Server console only)
+  
 ## Install
 インストールは通常のSpigotプラグイン同様、pluginフォルダにjarを入れるだけ。サーバを再起動させると必要なファイルが生成される。
 
