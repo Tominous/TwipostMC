@@ -21,6 +21,7 @@ permissions:
       tw.post: true
       tw.debug: true
       tw.notification: true
+      tw.delaytime: true
 
   tw.register:
     description: Allows /tw register
@@ -39,5 +40,9 @@ permissions:
     default: op
 
   tw.notification:
-    description: Allows /tw LoginNotificationTask
+    description: Allows /tw notification
+    default: op
+
+  tw.delaytime:
+    description: Allows /tw delaytime
     default: op

@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender
 object NotificationCommand : TWSubCommand(
         baseCmd = TW_CMD,
         name = NOTIFICATION_CMD,
-        canRunPlayer = false,
+        canRunPlayer = true,
         canRunServer = true,
         description = "Change login/logout notification on/off")
 {

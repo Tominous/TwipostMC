@@ -59,7 +59,9 @@ internal fun tweetPost(accessToken: AccessToken, message: String) : String {
     twitter.oAuthAccessToken = accessToken
     val statusUpdate = StatusUpdate(hashTagMessage)
     val status = twitter.updateStatus(statusUpdate)
-    debug("Tweet message: ${status.text}")
+
+    val consoleMessage = "Tweet message sending: " + status.text.replace("\n", " ")
+    pluginInstance.server.consoleSender.sendMessage(consoleMessage)
     return status.text
 }
 internal fun info(message: String) = pluginInstance.logger.info(message)

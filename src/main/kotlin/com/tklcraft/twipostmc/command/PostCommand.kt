@@ -22,6 +22,8 @@ object PostCommand : TWSubCommand(
             return
         }
 
+
+
         if (sender !is Player) return
         tweetPost(loadAccessToken(sender.uniqueId.toString()), sb.toString())
         sender.sendMessage("Successful tweet post")

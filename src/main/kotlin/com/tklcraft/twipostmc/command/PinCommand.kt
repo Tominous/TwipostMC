@@ -33,6 +33,10 @@ object PinCommand : TWSubCommand(
     }
 
     private fun connectTwitterAccountUser(player: Player, pin: String) {
+        if (!Globals.requestTokens.containsKey(player.uniqueId)) {
+            player.sendMessage("RequestToken does not exits. Enter /tw register")
+            return
+        }
         try {
             val accessToken = twitter.getOAuthAccessToken(
                     Globals.requestTokens[player.uniqueId], pin
@@ -49,6 +53,9 @@ object PinCommand : TWSubCommand(
     }
 
     private fun connectTwitterAccountServer(server: Server, pin: String) {
+        if (!Globals.requestTokens.containsKey(UUID(0, 0))) {
+            server.consoleSender.sendMessage("RequestToken does not exits. Enter /tw register")
+        }
         try {
             val uuid = UUID(0, 0)
             val accessToken = twitter.getOAuthAccessToken(

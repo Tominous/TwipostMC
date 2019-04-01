@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender
 object DelayTimeCommand : TWSubCommand(
         baseCmd = TW_CMD,
         name = DELAYTIME_CMD,
-        canRunPlayer = false,
+        canRunPlayer = true,
         canRunServer = true,
         args = "<delay time (seconds)>",
         description = "Set notification delay time")
@@ -22,7 +22,12 @@ object DelayTimeCommand : TWSubCommand(
             syntaxError(sender, "Delay time must be an integer.")
             return
         }
-        pluginInstance.config.set("delayTime", delayTime.toInt())
+
+        val delayTimeInt = delayTime.toInt().let {
+            if (it < 0) 0 else it
+        }
+
+        pluginInstance.config.set("delayTime", delayTimeInt)
         pluginInstance.saveConfig()
 
         sender.sendMessage("Set notification delay time: $delayTime")
