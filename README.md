@@ -30,8 +30,8 @@ config.ymlで各種設定を行うことができる。各設定値は[config.ym
   - tw.pin
   - tw. post
   - tw.debug (Server console only)
-  - tw.notification (Server console only)
-  - tw.delaytime (Server console only)
+  - tw.notification
+  - tw.delaytime
   
 ## Install
 インストールは通常のSpigotプラグイン同様、pluginフォルダにjarを入れるだけ。サーバを再起動させると必要なファイルが生成される。
