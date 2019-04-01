@@ -9,7 +9,7 @@ object NotificationCommand : TWSubCommand(
         name = NOTIFICATION_CMD,
         canRunPlayer = false,
         canRunServer = true,
-        description = "Change login or logout notification on/off")
+        description = "Change login/logout notification on/off")
 {
     override fun runCommand(sender: CommandSender, args: Array<out String>) {
         val isNotification = !pluginInstance.config.getBoolean("notification")

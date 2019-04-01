@@ -39,5 +39,5 @@ permissions:
     default: op
 
   tw.notification:
-    description: Allows /tw notification
+    description: Allows /tw LoginNotificationTask
     default: op

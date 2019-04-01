@@ -4,19 +4,19 @@ config-version: 1
 # Toggles debug mode, which prints additional information when the plugin does something.
 debug: false
 
-# Login notification interval (minutes)
-intervalTime: 15
+# Login notification delay time (seconds)
+delayTime: 600
 
 # User login/logout notification
 notification: false
 
-# Login notification tweet message
-loginTweetMessage: -|
+# Login LoginNotificationTask tweet message
+loginTweetMessage: |-
   [%DATE%]
   %PLAYER% joined Minecraft server.
 
-# Logout notification tweet message
-logoutTweetMessage: -|
+# Logout LoginNotificationTask tweet message
+logoutTweetMessage: |-
   [%DATE%]
   %PLAYER% left Minecraft server.
 

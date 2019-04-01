@@ -27,7 +27,12 @@ internal val twitterConfigFile : File by lazy {
 internal val  twitterConfig : YamlConfiguration by lazy {
     return@lazy YamlConfiguration.loadConfiguration(twitterConfigFile)
 }
-internal val requestTokens = mutableMapOf<UUID, RequestToken>()
+
+internal object Globals {
+    val requestTokens = mutableMapOf<UUID, RequestToken>()
+    val loginNotificationFlags = mutableMapOf<UUID, Boolean>()
+    val logoutNotificationFlags = mutableMapOf<UUID, Boolean>()
+}
 
 internal fun serverTweetPost(message: String) : String {
     val acsToken = twitterConfig.getString("server.accessToken")
@@ -54,6 +59,7 @@ internal fun tweetPost(accessToken: AccessToken, message: String) : String {
     twitter.oAuthAccessToken = accessToken
     val statusUpdate = StatusUpdate(hashTagMessage)
     val status = twitter.updateStatus(statusUpdate)
+    debug("Tweet message: ${status.text}")
     return status.text
 }
 internal fun info(message: String) = pluginInstance.logger.info(message)
