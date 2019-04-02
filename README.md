@@ -9,7 +9,7 @@ Minecraftのチャットコンソールからツイート
 
 ## Requirement
 - Spigot 1.13 (1.13以前のバージョンでも動くかもしれませんが、テストは行っていません)  
-- Twitter API
+- Twitter アカウント
 
 ## Usage
 - config  
