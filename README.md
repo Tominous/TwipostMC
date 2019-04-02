@@ -12,10 +12,7 @@ Minecraftのチャットコンソールからツイート
 - Twitter アカウント
 
 ## Usage
-- config  
-config.ymlで各種設定を行うことができる。各設定値は[config.yml](https://github.com/kanakiyo314/TwipostMC/blob/master/src/main/resources/config.yml)を参照
-
-- commands  
+- command  
   - /tw - このプラグインのベースコマンド
   - /tw register - MinecraftのユーザUUIDとTwitterアカウントを紐付けるためのコマンド。ユーザは送られてきたリンク先でTwitter連携許可を行う。
   - /tw pin <pin code> - regiserコマンドでTwitter連携を許可すると表示されるPINコードをサーバに送信する。連携成功の文章が表示されれば、Twitterとの紐付けが完了する。失敗した場合は、registerコマンドからやり直す。
@@ -32,6 +29,9 @@ config.ymlで各種設定を行うことができる。各設定値は[config.ym
   - tw.debug (Server console only)
   - tw.notification
   - tw.delaytime
+
+- config  
+config.ymlで各種設定を行うことができる。各設定値は[config.yml](https://github.com/kanakiyo314/TwipostMC/blob/master/src/main/resources/config.yml)を参照  
   
 ## Install
 インストールは通常のSpigotプラグイン同様、pluginフォルダにjarを入れるだけ。サーバを再起動させると必要なファイルが生成される。
