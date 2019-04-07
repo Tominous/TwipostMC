@@ -1,8 +1,8 @@
 name: TwipostMC
 version: @version@
 main: com.tklcraft.twipostmc.TwipostMCPlugin
-api-version: 1.13
-authors: [kanakiyo314, kakeru4127]
+api-version: '1.13'
+authors: [kanakiyo314]
 
 commands:
   tw:
@@ -45,4 +45,8 @@ permissions:
 
   tw.delaytime:
     description: Allows /tw delaytime
+    default: op
+
+  tw.upload:
+    description: Allows /tw upload
     default: op

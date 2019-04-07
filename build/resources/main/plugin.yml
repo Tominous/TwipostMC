@@ -46,3 +46,7 @@ permissions:
   tw.delaytime:
     description: Allows /tw delaytime
     default: op
+
+  tw.upload:
+    description: Allows /tw upload
+    default: op
