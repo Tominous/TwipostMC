@@ -13,13 +13,13 @@ Minecraftのチャットコンソールからツイート
 
 ## Usage
 - commands  
-  - /tw - このプラグインのベースコマンド
-  - /tw register - MinecraftのユーザUUIDとTwitterアカウントを紐付けるためのコマンド。ユーザは送られてきたリンク先でTwitter連携許可を行う。
-  - /tw pin <pin code> - regiserコマンドでTwitter連携を許可すると表示されるPINコードをサーバに送信する。連携成功の文章が表示されれば、Twitterとの紐付けが完了する。失敗した場合は、registerコマンドからやり直す。
-  - /tw post <text | "tweet message">- Twitter連携完了後に使うことができるコマンド。Minecraftからツイート行うことができる。空白文字または全角文字を含むツイートをしたい場合はメッセージを""で囲う必要がある。
-  - /tw debug - サーバコンソールでのみ可能なコマンド。デバッグモードのON/OFFを切り替え、ONにした場合はサーバに流れるログメッセージがより詳細なものとなる。
-  - /tw notification - ユーザのログイン、ログアウトをTwitterに自動的に通知するかどうか設定する。ツイートするTwitterアカウントはサーバコンソールからregisterされたアカウントになる。
-  - /tw delaytime - 通知遅延時間を秒単位で設定する。delayTime内に同じユーザが複数回ログインまたはログアウトした場合、ツイート回数は1回となる。0に設定した場合、即時にTwitterによる通知が行われる。
+  - `/tw` - このプラグインのベースコマンド
+  - `/tw register` - MinecraftのユーザUUIDとTwitterアカウントを紐付けるためのコマンド。ユーザは送られてきたリンク先でTwitter連携許可を行う。
+  - `/tw pin <pin code>` - regiserコマンドでTwitter連携を許可すると表示されるPINコードをサーバに送信する。連携成功の文章が表示されれば、Twitterとの紐付けが完了する。失敗した場合は、registerコマンドからやり直す。
+  - `/tw post <text | "tweet message">` - Twitter連携完了後に使うことができるコマンド。Minecraftからツイート行うことができる。空白文字または全角文字を含むツイートをしたい場合はメッセージを""で囲う必要がある。
+  - `/tw debug` - サーバコンソールでのみ可能なコマンド。デバッグモードのON/OFFを切り替え、ONにした場合はサーバに流れるログメッセージがより詳細なものとなる。
+  - `/tw notification` - ユーザのログイン、ログアウトをTwitterに自動的に通知するかどうか設定する。ツイートするTwitterアカウントはサーバコンソールからregisterされたアカウントになる。
+  - `/tw delaytime` - 通知遅延時間を秒単位で設定する。delayTime内に同じユーザが複数回ログインまたはログアウトした場合、ツイート回数は1回となる。0に設定した場合、即時にTwitterによる通知が行われる。
   
 - permission
   - tw.*
