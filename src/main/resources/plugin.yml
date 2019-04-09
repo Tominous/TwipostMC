@@ -16,12 +16,20 @@ permissions:
     description: Give access to all TwipostMC functions
     default: false
     children:
-      tw.sample: true
+      tw.register: true
       tw.ping: true
       tw.post: true
       tw.debug: true
       tw.notification: true
       tw.delaytime: true
+
+  tw.user:
+    description: Give access to TwipostMC functions for user
+    default: false
+    children:
+      tw.register: true
+      tw.ping: true
+      tw.post: true
 
   tw.register:
     description: Allows /tw register

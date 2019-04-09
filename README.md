@@ -23,6 +23,7 @@ Minecraftのチャットコンソールからツイート
   
 - permission
   - tw.*
+  - tx.user (for user permission)
   - tw.register
   - tw.pin
   - tw. post
