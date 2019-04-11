@@ -19,10 +19,6 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -39,9 +35,6 @@ $RECYCLE.BIN
 *.msm
 *.msp
 
-# Windows Batch File
-*.bat
-
 # OSX
 .DS_Stor
 .AppleDouble
@@ -50,14 +43,14 @@ $RECYCLE.BIN
 # Thumbnails
 ._*
 
-# Kotlin
-/.gradle/
-/.idea/**/workspace.xml
-/.idea/**/tasks.xml
-tmp/
+# IntelliJ
+.gradle/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
 /bin/
-/out/
-*.test
+tmp/
+build/
+out/
 *.swp
 *.iml
 
