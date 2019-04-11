@@ -1,4 +1,5 @@
-# Spigot plugin
+# TwipostMC
+**Spigot Plugin**  
 Post a tweet from chat console of Minecraft  
 Notice a player login or logout on Twitter
 
@@ -25,13 +26,13 @@ Notice a player login or logout on Twitter
 - `/tw debug` – Attempts to switch debug mode. On debug mode, debug messages are flowed at the server console.
 
 ## Permissions
-- tw.* - Give access to all TwipostMC functions
-- tw.user - Give access to TwipostMC functions for user
-- tw.register – Allows /tw regster
-- tw.pin – Allows /tw ping
-- tw.notification – Allows /tw notification
-- tw.delaytime – Allows /tw delaytime
-- tw.debug – Allows /tw debug
+- `tw.*` - Give access to all TwipostMC functions
+- `tw.user` - Give access to TwipostMC functions for user
+- `tw.register` – Allows /tw regster
+- `tw.pin` – Allows /tw ping
+- `tw.notification` – Allows /tw notification
+- `tw.delaytime` – Allows /tw delaytime
+- `tw.debug` – Allows /tw debug
 
 ## Confituration
 Configure settings in config.yml
