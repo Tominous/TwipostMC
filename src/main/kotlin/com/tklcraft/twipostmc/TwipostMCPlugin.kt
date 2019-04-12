@@ -34,8 +34,10 @@ class TwipostMCPlugin : JavaPlugin() {
     }
 
     private fun setTwitterOAuth() {
-        val defaultConsumerKey = "LU8iL21s8oY2UJjd8RndGE9NN"
-        val defaultConsumerSecret = "C92kVLlMVytvCdC4TuMS5jI4ig9pcIicPE6gEADlpgv3Y4JtlK"
+        // TODO: Change the following Twitter API key
+        val defaultConsumerKey = "changeme"
+        val defaultConsumerSecret = "changeme"
+
         val configConsumerKey = twitterConfig.getString("server.consumerKey") ?: ""
         val configConsumerSecret = twitterConfig.getString("server.consumerSecret") ?: ""
 

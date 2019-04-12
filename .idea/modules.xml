@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TwipostMC.iml" filepath="$PROJECT_DIR$/.idea/TwipostMC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.iml" filepath="$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.tkl-craft.TwipostMC.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TwipostMC.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TwipostMC.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TwipostMC.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TwipostMC.test.iml" />
     </modules>
   </component>
 </project>
