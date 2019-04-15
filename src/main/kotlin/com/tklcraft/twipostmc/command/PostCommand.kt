@@ -2,8 +2,10 @@ package com.tklcraft.twipostmc.command
 
 import com.tklcraft.twipostmc.tweetPost
 import com.tklcraft.twipostmc.twitterConfig
+import com.tklcraft.twipostmc.warning
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import twitter4j.TwitterException
 import twitter4j.auth.AccessToken
 
 object PostCommand : TWSubCommand(
@@ -17,18 +19,24 @@ object PostCommand : TWSubCommand(
 ) {
     override fun runCommand(sender: CommandSender, args: Array<out String>) {
         val sb = StringBuffer().append(connectArgs(args))
-        if(sb.isEmpty()) {
+        if (sb.isEmpty()) {
             sendUsage(sender)
             return
         }
 
-
-        if (sender !is Player) return
+        if (sender !is Player) {
+            sender.sendMessage("This command can only used by the user.")
+            return
+        }
         try {
             tweetPost(loadAccessToken(sender.uniqueId.toString()), sb.toString())
             sender.sendMessage("Successful tweet post")
+        } catch (te : TwitterException) {
+            warning(te.errorMessage)
+            sender.sendMessage(te.errorMessage)
         } catch (e: Exception) {
-            sender.sendMessage(e.printStackTrace().toString())
+            warning(e.message!!)
+            sender.sendMessage(e.message!!)
         }
     }
 

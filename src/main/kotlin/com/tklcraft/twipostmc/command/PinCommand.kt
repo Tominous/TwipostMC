@@ -47,10 +47,14 @@ object PinCommand : TWSubCommand(
             twitterConfig.save(twitterConfigFile)
             Globals.requestTokens.remove(player.uniqueId)
         } catch (te: TwitterException) {
-            if (te.statusCode == 401) player.sendMessage("Unable to get the access token.")
-            else throw te
+            if (te.statusCode == 401) {
+                player.sendMessage("Unable to get the access token.")
+                player.sendMessage("Check the PIN code and enter it again or try again from register command.")
+            }
+            else player.sendMessage(te.errorMessage)
         } catch (e: Exception) {
-            throw Exception(e.message)
+            player.sendMessage(e.message!!)
+            e.printStackTrace()
         }
     }
 
@@ -68,9 +72,12 @@ object PinCommand : TWSubCommand(
             twitterConfig.save(twitterConfigFile)
             Globals.requestTokens.remove(uuid)
         } catch (te: TwitterException) {
-            if (te.statusCode == 401) server.consoleSender.sendMessage("Unable to the the access token.")
+            if (te.statusCode == 401) {
+                server.consoleSender.sendMessage("Unable to the the access token.")
+                server.consoleSender.sendMessage("Check the PIN code and enter it again or try again from register command.")
+            }
         } catch (e: Exception) {
-            throw Exception(e.message)
+            e.printStackTrace()
         }
     }
 

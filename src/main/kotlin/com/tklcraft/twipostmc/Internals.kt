@@ -1,6 +1,7 @@
 package com.tklcraft.twipostmc
 
 import org.bukkit.Bukkit.getPluginManager
+import org.bukkit.ChatColor
 import org.bukkit.configuration.file.YamlConfiguration
 import twitter4j.StatusUpdate
 import twitter4j.TwitterException
@@ -8,7 +9,6 @@ import twitter4j.TwitterFactory
 import twitter4j.auth.AccessToken
 import twitter4j.auth.RequestToken
 import java.io.File
-import java.lang.Exception
 import java.util.*
 
 internal val pluginInstance : TwipostMCPlugin by lazy {
@@ -65,10 +65,10 @@ internal fun tweetPost(accessToken: AccessToken, message: String) {
 
         val consoleMessage = "Tweet message sending: " + status.text.replace("\n", " ")
         info(consoleMessage)
-    } catch (tw : TwitterException) {
-        warning(tw.errorMessage)
+    } catch (te : TwitterException) {
+        throw te
     } catch (e : Exception) {
-        warning(e.message!!)
+        throw e
     }
 }
 internal fun info(message: String) = pluginInstance.logger.info(message)
