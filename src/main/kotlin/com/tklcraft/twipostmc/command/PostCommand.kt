@@ -24,8 +24,12 @@ object PostCommand : TWSubCommand(
 
 
         if (sender !is Player) return
-        tweetPost(loadAccessToken(sender.uniqueId.toString()), sb.toString())
-        sender.sendMessage("Successful tweet post")
+        try {
+            tweetPost(loadAccessToken(sender.uniqueId.toString()), sb.toString())
+            sender.sendMessage("Successful tweet post")
+        } catch (e: Exception) {
+            sender.sendMessage(e.printStackTrace().toString())
+        }
     }
 
     private fun loadAccessToken(uuid: String) : AccessToken{

@@ -26,15 +26,15 @@ object PinCommand : TWSubCommand(
         }
 
         when (sender) {
-            is Player -> connectTwitterAccountUser(sender, args.first())
-            else -> connectTwitterAccountServer(sender.server, args.first())
+            is Player -> saveTwitterAccountUser(sender, args.first())
+            else -> saveTwitterAccountServer(sender.server, args.first())
         }
         sender.sendMessage("Twitter cooperation is complete!")
     }
 
-    private fun connectTwitterAccountUser(player: Player, pin: String) {
+    private fun saveTwitterAccountUser(player: Player, pin: String) {
         if (!Globals.requestTokens.containsKey(player.uniqueId)) {
-            player.sendMessage("RequestToken does not exits. Enter /tw register")
+            player.sendMessage("RequestToken does not exits. Enter /$TW_CMD register")
             return
         }
         try {
@@ -49,12 +49,14 @@ object PinCommand : TWSubCommand(
         } catch (te: TwitterException) {
             if (te.statusCode == 401) player.sendMessage("Unable to get the access token.")
             else throw te
+        } catch (e: Exception) {
+            throw Exception(e.message)
         }
     }
 
-    private fun connectTwitterAccountServer(server: Server, pin: String) {
+    private fun saveTwitterAccountServer(server: Server, pin: String) {
         if (!Globals.requestTokens.containsKey(UUID(0, 0))) {
-            server.consoleSender.sendMessage("RequestToken does not exits. Enter /tw register")
+            server.consoleSender.sendMessage("RequestToken does not exits. Enter /$TW_CMD register")
         }
         try {
             val uuid = UUID(0, 0)
@@ -67,6 +69,8 @@ object PinCommand : TWSubCommand(
             Globals.requestTokens.remove(uuid)
         } catch (te: TwitterException) {
             if (te.statusCode == 401) server.consoleSender.sendMessage("Unable to the the access token.")
+        } catch (e: Exception) {
+            throw Exception(e.message)
         }
     }
 
