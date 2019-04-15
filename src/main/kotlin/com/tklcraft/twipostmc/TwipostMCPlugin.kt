@@ -39,7 +39,7 @@ class TwipostMCPlugin : JavaPlugin() {
         val defaultConsumerSecret = "changeme"
 
         val configConsumerKey = twitterConfig.getString("server.consumerKey") ?: ""
-        val configConsumerSecret = twitterConfig.getString("server.consumerSecret") ?: ""
+        val configConsumerSecret = twitterConfig.getString("server.consumerKeySecret") ?: ""
 
         val consumerKey = if (configConsumerKey.isNotBlank()) configConsumerKey else defaultConsumerKey
         val consumerSecret = if (configConsumerSecret.isNotBlank()) configConsumerSecret else defaultConsumerSecret
