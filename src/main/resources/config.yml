@@ -2,13 +2,13 @@
 config-version: 1
 
 # Toggles debug mode, which prints additional information when the plugin does something.
-debug: false
+debug: true
 
 # Login notification delay time (seconds)
 delayTime: 600
 
 # User login/logout notification
-notification: false
+notification: true
 
 # Login LoginNotificationTask tweet message
 loginTweetMessage: |-
@@ -23,3 +23,5 @@ logoutTweetMessage: |-
 # Hash tag
 hashTag:
   - TwipostMC
+  - casparnetwork
+  - WTFisthispluginfor
